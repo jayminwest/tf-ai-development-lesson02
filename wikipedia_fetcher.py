@@ -4,7 +4,12 @@ import os
 
 def fetch_wikipedia_article(title):
     """Fetch a Wikipedia article and save it as markdown"""
-    wiki_wiki = wikipediaapi.Wikipedia('en')
+    # Set a proper user agent that identifies your application
+    user_agent = "MyWikipediaFetcher/1.0 (https://github.com/yourusername/yourrepo; your.email@example.com)"
+    wiki_wiki = wikipediaapi.Wikipedia(
+        language='en',
+        user_agent=user_agent
+    )
     page = wiki_wiki.page(title)
     
     if not page.exists():
